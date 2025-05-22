@@ -14,20 +14,12 @@
             <nav>
                 <h2>To-Do App</h2>
                 <div class="boards-section">
-                    <div class="boards-section-header">
-                        <p>Your boards</p>
+                    <p>Your boards</p>
+                    <div class="new-board-container">
+                        <input type="text" class="board-name-input" placeholder="New board...">
                         <button class="new-board-button" type="button"><i class="fa-solid fa-plus"></i></button>
-                    </div>
-                    <div class="boards-tabs-container">
-                        <div class="board-tab">
-                            <p class="board-name">Board example 1</p>
-                            <button class="delete-board-button" type="button"><i class="fa-solid fa-xmark"></i></button>
-                        </div>
-                        <div class="board-tab">
-                            <p class="board-name">Board example 2</p>
-                            <button class="delete-board-button" type="button"><i class="fa-solid fa-xmark"></i></button>
-                        </div>
-                    </div>
+                    </div>    
+                    <div class="boards-tabs-container"></div>
                 </div>
                 <input class="color-picker" type="color">   
             </nav>
@@ -44,9 +36,18 @@
                         <div class="todo-content">
                             <p>House chores for Monday</p>
                             <div class="tasks-wrapper">
-                                <p><input type="checkbox">Sacar la basura</p>
-                                <p><input type="checkbox">Estudiar</p>
-                                <p><input type="checkbox">Hacer las compras</p>
+                                <label>
+                                    <input type="checkbox">
+                                    <span class="task">Chore 1</span>
+                                </label>
+                                <label>
+                                    <input type="checkbox">
+                                    <span class="task">Chore 2</span>
+                                </label>
+                                <label>
+                                    <input type="checkbox">
+                                    <span class="task">Chore 3</span>
+                                </label>
                             </div>
                         </div>
                     </div>
@@ -61,18 +62,54 @@
                         <div class="todo-content">
                             <p>Todo for exam</p>
                             <div class="tasks-wrapper">
-                                <p><input type="checkbox">Unit 1</p>
-                                <p><input type="checkbox">Unit 2</p>
-                                <p><input type="checkbox">Unit 3</p>
-                                <p><input type="checkbox">Unit 4</p>
-                                <p><input type="checkbox">Unit 5</p>
-                                <p><input type="checkbox">Unit 6</p>
-                                <p><input type="checkbox">Unit 7</p>
-                                <p><input type="checkbox">Unit 8</p>
-                                <p><input type="checkbox">Unit 9</p>
-                                <p><input type="checkbox">Unit 10</p>
-                                <p><input type="checkbox">Unit 11</p>
-                                <p><input type="checkbox">Unit 12</p>
+                                <label>
+                                    <input type="checkbox">
+                                    <span class="task">Unit 1</span>
+                                </label>
+                                <label>
+                                    <input type="checkbox">
+                                    <span class="task">Unit 2</span>
+                                </label>
+                                <label>
+                                    <input type="checkbox">
+                                    <span class="task">Unit 3</span>
+                                </label>
+                                <label>
+                                    <input type="checkbox">
+                                    <span class="task">Unit 4</span>
+                                </label>
+                                <label>
+                                    <input type="checkbox">
+                                    <span class="task">Unit 5</span>
+                                </label>
+                                <label>
+                                    <input type="checkbox">
+                                    <span class="task">Unit 6</span>
+                                </label>
+                                <label>
+                                    <input type="checkbox">
+                                    <span class="task">Unit 7</span>
+                                </label>
+                                <label>
+                                    <input type="checkbox">
+                                    <span class="task">Unit 8</span>
+                                </label>
+                                <label>
+                                    <input type="checkbox">
+                                    <span class="task">Unit 9</span>
+                                </label>
+                                <label>
+                                    <input type="checkbox">
+                                    <span class="task">Unit 10</span>
+                                </label>
+                                <label>
+                                    <input type="checkbox">
+                                    <span class="task">Unit 11</span>
+                                </label>
+                                <label>
+                                    <input type="checkbox">
+                                    <span class="task">Unit 12</span>
+                                </label>
                             </div>
                         </div>
                     </div>
@@ -80,7 +117,7 @@
                 <button class="new-todo-button" type="button"><i class="fa-solid fa-plus"></i></button>
             </div>
         </main>
-        <footer><p>Copyright © agus2025. All rights reserved.</p></footer>
+        <footer><p>All rights reserved.</p></footer>
     </body>
     <script src="index.js"></script>
     <script src="https://kit.fontawesome.com/677e0631d7.js" crossorigin="anonymous"></script>

@@ -35,22 +35,35 @@ main > nav > h2{
 main > nav > .boards-section{
     background-color: #929c7f;
     margin-top: 20px;
-    padding: 2px 4px;
+    padding: 5px;
     display: flex;
     flex-direction: column;
     border-radius: 4px;
-    min-height: 400px;
+    height: 500px;
 }
 
-main > nav > .boards-section > .boards-section-header{
+main > nav > .boards-section > .new-board-container{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 5px;
-    padding: 5px 2px;
+    gap: 4px;
+    margin: 5px 0;
 }
 
-main > nav > .boards-section > .boards-section-header > .new-board-button{
+main > nav > .boards-section > .new-board-container > input{
+    background-color: transparent;
+    border: 1px solid #79816a;
+    padding: 0 2px;
+    border-radius: 4px;
+    transition: all 200ms;
+}
+
+main > nav > .boards-section > .new-board-container > input:focus{
+    background-color: #79816a;
+    outline: none;
+}
+
+main > nav > .boards-section > .new-board-container > .new-board-button{
     width: 20px;
     height: 20px;
     border-radius: 50%;
@@ -60,7 +73,7 @@ main > nav > .boards-section > .boards-section-header > .new-board-button{
     transition: all 200ms;
 }
 
-main > nav > .boards-section > .boards-section-header > .new-board-button:hover{
+main > nav > .boards-section > .new-board-container > .new-board-button:hover{
     background-color: #798368;
 }
 
@@ -69,6 +82,7 @@ main > nav > .boards-section > .boards-tabs-container{
     flex-direction: column;
     gap: 3px;
     padding: 0 2px;
+    overflow-y: auto;
 }
 
 main > nav > .boards-section > .boards-tabs-container > .board-tab{
@@ -176,10 +190,15 @@ main > .board > .todo-wrapper > .todo > .todo-content > .tasks-wrapper {
     flex-direction: column;
     flex-wrap: wrap;
 }
-main > .board > .todo-wrapper > .todo > .todo-content > .tasks-wrapper > p{
+
+main > .board > .todo-wrapper > .todo > .todo-content > .tasks-wrapper > label{
     display: flex;
     align-items: center;
     gap: 5px;
+}
+
+main > .board > .todo-wrapper > .todo > .todo-content > .tasks-wrapper > label > input:checked + span {
+  text-decoration: line-through;
 }
 
 
