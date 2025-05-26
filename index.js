@@ -65,6 +65,9 @@ document.addEventListener("DOMContentLoaded", () => {
         newTodoHeader.appendChild(newTodoTitle);
         newTodoHeader.appendChild(todoDeleteButton);
 
+        const newTodoDescription = document.createElement("p");
+        newTodoDescription.textContent = todoDescription.trim();
+
         // New task section
         const newTaskSection = document.createElement("div");
         newTaskSection.classList.add("todo-new-task");
@@ -86,10 +89,6 @@ document.addEventListener("DOMContentLoaded", () => {
         // Content
         const newTodoContent = document.createElement("div");
         newTodoContent.classList.add("todo-content");
-
-        const newTodoDescription = document.createElement("p");
-        newTodoDescription.textContent = todoDescription.trim();
-        newTodoContent.appendChild(newTodoDescription);
 
         const tasksWrapper = document.createElement("div");
         tasksWrapper.classList.add("tasks-wrapper");
@@ -122,10 +121,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 newTaskButton.click();
             }
         });
-        
+
         newTodoContent.appendChild(tasksWrapper);
 
         newTodo.appendChild(newTodoHeader);
+        newTodo.appendChild(newTodoDescription);
         newTodo.appendChild(newTaskSection);
         newTodo.appendChild(newTodoContent);
 
