@@ -1,3 +1,37 @@
+:root {
+  /* Main Background and App Shell */
+  --main-bg-color: #f7f9fc;            /* Lightest background for the app */
+  --todo-card-bg-color: #e5eef9;       /* Todo card background */
+  --todo-card-border-color: #c6dcf1;   /* Card border or subtle separator */
+
+  /* Navbar */
+  --navbar-bg-color: #1d3d5d;          /* Navbar background */
+  --navbar-text-color: #f3f7fc;        /* Navbar text (light on dark) */
+
+  /* Primary Buttons */
+  --button-primary-bg: #3484c3;        /* Main call-to-action button */
+  --button-primary-hover-bg: #256ba9;  /* Hover state for primary button */
+  --button-primary-active-bg: #1e5486; /* Active/pressed state */
+  --button-primary-text: #ffffff;      /* Text on primary buttons */
+
+  /* Secondary Buttons */
+  --button-secondary-bg: #93c0e6;      /* Less prominent action */
+  --button-secondary-hover-bg: #59a0d7;/* Hover for secondary button */
+  --button-secondary-text: #1d3d5d;    /* Text on secondary buttons */
+
+  /* Text Colors */
+  --text-primary-color: #1d476f;       /* Main body text */
+  --text-secondary-color: #1d3d5d;     /* Subtle text or labels */
+  --heading-color: #1e5486;            /* Section titles / headings */
+
+  /* Footer or Dark Sections */
+  --footer-bg-color: #13273e;          /* Dark footer or sidebar */
+
+  /* Disabled / Muted Elements */
+  --disabled-bg-color: #c6dcf1;        /* For disabled buttons or inputs */
+  --disabled-text-color: #93c0e6;      /* Muted text */
+}
+
 *{
     margin: 0;
     padding: 0;
@@ -16,15 +50,16 @@ main{
     flex: 1;
     display: flex;
     width: 100%;
+    overflow: hidden;
 }
 
 main > nav{
     flex: 0 0 10%;
     height: 100%;
-    background-color: #bbc7a4;
+    background-color: var(--navbar-bg-color);
+    color: var(--navbar-text-color);
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     padding: 6px 10px;
 }
 
@@ -33,10 +68,10 @@ main > nav > h2{
 }
 
 main > nav > .boards-section{
-    background-color: #929c7f;
+    background-color: var(--heading-color);
     margin-top: 20px;
-    padding: 5px;
     display: flex;
+    padding: 5px;
     flex-direction: column;
     border-radius: 4px;
     height: 500px;
@@ -52,14 +87,15 @@ main > nav > .boards-section > .new-board-container{
 
 main > nav > .boards-section > .new-board-container > input{
     background-color: transparent;
-    border: 1px solid #79816a;
+    border: 1px solid transparent;
+    color: var(--navbar-text-color);
     padding: 0 2px;
     border-radius: 4px;
     transition: all 200ms;
 }
 
 main > nav > .boards-section > .new-board-container > input:focus{
-    background-color: #79816a;
+    background-color: var(--navbar-bg-color);
     outline: none;
 }
 
@@ -70,11 +106,12 @@ main > nav > .boards-section > .new-board-container > .new-board-button{
     border: 1px solid transparent;
     cursor: pointer;
     background-color: transparent;
+    color: var(--button-secondary-text);
     transition: all 200ms;
 }
 
 main > nav > .boards-section > .new-board-container > .new-board-button:hover{
-    background-color: #798368;
+    background-color: var(--button-secondary-hover-bg);
 }
 
 main > nav > .boards-section > .boards-tabs-container{
@@ -90,7 +127,8 @@ main > nav > .boards-section > .boards-tabs-container > .board-tab{
     justify-content: space-between;
     align-items: center;
     padding: 2px 4px;
-    background-color: #798368;
+    background-color: var(--disabled-bg-color);
+    color: var(--text-secondary-color);
     border: 1px solid transparent;
     border-radius: 4px;
     text-align: left;
@@ -106,50 +144,46 @@ main > nav > .boards-section > .boards-tabs-container > .board-tab > .delete-boa
     border: 1px solid transparent;
     cursor: pointer;
     background-color: transparent;
+    color: var(--button-secondary-text);
     transition: all 200ms;
 }
 
 main > nav > .boards-section > .boards-tabs-container > .board-tab > .delete-board-button:hover{
-    background-color: #606852;
-}
-
-
-main > nav > .color-picker {
-  margin-top: auto;
-  margin-bottom: 10px;
-  align-self: center;
-  border: none;
-  width: 100px;
-  height: 15px;
-  border-radius: 4px;
+    background-color: var(--button-secondary-hover-bg);
 }
 
 main > .board{
     height: 100%;
     flex: 1;
-    background-color: #f2f5ea;
+    background-color: var(--main-bg-color);
     padding: 30px 40px;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
+    overflow: hidden;
 }
 
 main > .board > .todo-wrapper{
+    flex: 1;
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
+    overflow-y: auto;
+    padding-right: 4px;
 }
 
 main > .board > .todo-wrapper > .todo{
     width: 250px;
     height: 300px;
-    overflow-y: auto;
     display: flex;
     flex-direction: column;
-    background-color: #d6dbd2;
+    background-color: var(--todo-card-bg-color);
+    color: var(--footer-bg-color);
+    border: 1px solid transparent;
     border-radius: 4px;
     padding: 8px 10px;
     gap: 4px;
+    overflow: hidden;
 }
 
 main > .board > .todo-wrapper > .todo > .todo-header{
@@ -157,24 +191,47 @@ main > .board > .todo-wrapper > .todo > .todo-header{
     justify-content: space-between;
     align-items: center;
 }
-main > .board > .todo-wrapper > .todo > .todo-header > .todo-header-buttons > button{
+
+.delete-todo-button, .new-task-button{
     height: 20px;
     width: 20px;
     background-color: transparent;
+    color: var(--button-secondary-text);
     border: 1px solid transparent;
     border-radius: 50%;
     cursor: pointer;
     transition: all 200ms;
 }
 
-main > .board > .todo-wrapper > .todo > .todo-header > .todo-header-buttons > button:hover{
-    background-color: #a5ada0;
+.delete-todo-button:hover, .new-task-button:hover{
+    background-color: var(--button-secondary-hover-bg);
+}
+
+main > .board > .todo-wrapper > .todo > .todo-new-task{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+main > .board > .todo-wrapper > .todo > .todo-new-task > .new-task-input{
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: 0 2px;
+    border-radius: 4px;
+    transition: all 200ms;
+}
+
+main > .board > .todo-wrapper > .todo > .todo-new-task > .new-task-input:focus{
+    background-color: var(--disabled-bg-color);
+    outline: none;
 }
 
 main > .board > .todo-wrapper > .todo > .todo-content {
     display: flex;
     flex-direction: column;
     gap: 4px;
+    flex-grow: 1;
+    overflow: hidden;
 }
 
 main > .board > .todo-wrapper > .todo > .todo-content > p {
@@ -184,11 +241,14 @@ main > .board > .todo-wrapper > .todo > .todo-content > p {
 main > .board > .todo-wrapper > .todo > .todo-content > .tasks-wrapper {
     font-size: 15px;
     display: flex;
-    border: 1px solid #a1a79e;
+    border: 1px solid var(--todo-card-border-color);
     border-radius: 4px;
     padding: 5px;
     flex-direction: column;
-    flex-wrap: wrap;
+    gap: 2px;
+    overflow-y: auto;
+    flex-grow: 1;
+    min-height: 0;
 }
 
 main > .board > .todo-wrapper > .todo > .todo-content > .tasks-wrapper > label{
@@ -197,33 +257,39 @@ main > .board > .todo-wrapper > .todo > .todo-content > .tasks-wrapper > label{
     gap: 5px;
 }
 
-main > .board > .todo-wrapper > .todo > .todo-content > .tasks-wrapper > label > input:checked + span {
-  text-decoration: line-through;
+main > .board > .todo-wrapper > .todo > .todo-content > .tasks-wrapper > label > .checked{
+    text-decoration: line-through;
 }
-
 
 main > .board > .new-todo-button{
     margin-top: auto;
     align-self: flex-end;
     height: 50px;
     width: 50px;
+    position: sticky;
+    z-index: 10;
     border: 1px solid transparent;
+    flex-shrink: 0;
     border-radius: 50%;
-    background-color: #2c363f;
-    color: #e75a7c;
+    background-color: var(--button-primary-bg);
+    color: var(--button-primary-text);
     cursor: pointer;
     transition: all 250ms;
 }
 
 main > .board > .new-todo-button:hover{
-    /*filter: brightness(1.5);*/
-    background-color: #495968;
+    background-color: var(--button-primary-hover-bg);
+}
+
+main > .board > .new-todo-button:active{
+    background-color: var(--button-primary-active-bg);
 }
 
 footer{
     width: 100%;
     display: flex;
     justify-content: center;
-    background-color: #d6dbd2;
+    background-color: var(--footer-bg-color);
+    color: var(--disabled-text-color);
 }
 

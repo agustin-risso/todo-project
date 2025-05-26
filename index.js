@@ -1,36 +1,135 @@
-const input = document.querySelector(".board-name-input");
-const newBoardButton = document.querySelector(".new-board-button");
-const boardsTabsContainer = document.querySelector(".boards-tabs-container");
+document.addEventListener("DOMContentLoaded", () => {
 
-const newBoardTab = document.createElement("div");
-newBoardTab.classList.add("board-tab");
-const boardName = document.createElement("p");
-boardName.textContent = "Nuevo tablero creado";
-newBoardTab.appendChild(boardName)
+    // Board 
+    const boardInput = document.querySelector(".board-name-input");
+    const newBoardButton = document.querySelector(".new-board-button");
+    const boardsTabsContainer = document.querySelector(".boards-tabs-container");
 
-newBoardButton.addEventListener("click", () => {
-    const newBoardTab = document.createElement("div");
-    newBoardTab.classList.add("board-tab");
 
-    const boardName = document.createElement("p");
-    boardName.classList.add("board-name");
-    boardName.textContent = input.value.trim();
-    input.value = "";
+    newBoardButton.addEventListener("click", () => {
+        const newBoardTab = document.createElement("div");
+        newBoardTab.classList.add("board-tab");
 
-    const deleteBoardButton = document.createElement("button");
-    deleteBoardButton.classList.add("delete-board-button")
+        const boardName = document.createElement("p");
+        boardName.classList.add("board-name");
+        boardName.textContent = boardInput.value.trim();
+        boardInput.value = "";
 
-    const deleteBoardButtonIcon = document.createElement("i");
-    deleteBoardButtonIcon.classList.add("fa-solid", "fa-xmark");
+        const deleteBoardButton = document.createElement("button");
+        deleteBoardButton.classList.add("delete-board-button")
 
-    deleteBoardButton.appendChild(deleteBoardButtonIcon);
+        const deleteBoardButtonIcon = document.createElement("i");
+        deleteBoardButtonIcon.classList.add("fa-solid", "fa-xmark");
 
-    deleteBoardButton.addEventListener("click", () => {
-        newBoardTab.remove();
+        deleteBoardButton.appendChild(deleteBoardButtonIcon);
+
+        deleteBoardButton.addEventListener("click", () => {
+            newBoardTab.remove();
+        });
+
+        newBoardTab.appendChild(boardName);
+        newBoardTab.appendChild(deleteBoardButton);
+
+        boardsTabsContainer.appendChild(newBoardTab);
     });
 
-    newBoardTab.appendChild(boardName);
-    newBoardTab.appendChild(deleteBoardButton);
+    // Main button, new to do
+    const newTodoButton = document.querySelector(".new-todo-button");
+    const todoWrapper = document.querySelector(".todo-wrapper");
+    const todo = document.querySelector(".todo");
 
-    boardsTabsContainer.appendChild(newBoardTab);
+    newTodoButton.addEventListener("click", () => {
+        const todoTitle = prompt("Add your todo title:");
+        const todoDescription = prompt("Add a short description for your todo:");
+
+        const newTodo = document.createElement("div");
+        newTodo.classList.add("todo");
+
+        // Header
+        const newTodoHeader = document.createElement("div");
+        newTodoHeader.classList.add("todo-header");
+
+        const newTodoTitle = document.createElement("h3");
+        newTodoTitle.textContent = todoTitle.trim();
+
+        const todoDeleteButton = document.createElement("button");
+        todoDeleteButton.classList.add("delete-todo-button");
+        const deleteButtonIcon = document.createElement("i");
+        deleteButtonIcon.classList.add("fa-solid", "fa-xmark");
+        todoDeleteButton.appendChild(deleteButtonIcon);
+
+        todoDeleteButton.addEventListener("click", () => {
+            newTodo.remove();
+        });
+
+        newTodoHeader.appendChild(newTodoTitle);
+        newTodoHeader.appendChild(todoDeleteButton);
+
+        // New task section
+        const newTaskSection = document.createElement("div");
+        newTaskSection.classList.add("todo-new-task");
+
+        const newTaskInput = document.createElement("input");
+        newTaskInput.type = "text";
+        newTaskInput.placeholder = "New task...";
+        newTaskInput.classList.add("new-task-input");
+
+        const newTaskButton = document.createElement("button");
+        newTaskButton.classList.add("new-task-button");
+        const taskButtonIcon = document.createElement("i");
+        taskButtonIcon.classList.add("fa-solid", "fa-plus");
+        newTaskButton.appendChild(taskButtonIcon);
+
+        newTaskSection.appendChild(newTaskInput);
+        newTaskSection.appendChild(newTaskButton);
+
+        // Content
+        const newTodoContent = document.createElement("div");
+        newTodoContent.classList.add("todo-content");
+
+        const newTodoDescription = document.createElement("p");
+        newTodoDescription.textContent = todoDescription.trim();
+        newTodoContent.appendChild(newTodoDescription);
+
+        const tasksWrapper = document.createElement("div");
+        tasksWrapper.classList.add("tasks-wrapper");
+
+        newTaskButton.addEventListener("click", () => {
+            const newTask = document.createElement("label");
+
+            const newTaskCheckBox = document.createElement("input");
+            newTaskCheckBox.type = "checkbox";
+            
+            const newTaskText = document.createElement("span");
+            newTaskText.classList.add("task");
+            newTaskText.textContent = newTaskInput.value.trim();
+
+            newTaskCheckBox.addEventListener("change", () => {
+                newTaskText.classList.toggle("checked", newTaskCheckBox.checked);
+            });
+
+            newTaskInput.value = "";
+
+            newTask.appendChild(newTaskCheckBox);
+            newTask.appendChild(newTaskText);
+            
+            tasksWrapper.appendChild(newTask);
+        });
+
+        newTaskInput.addEventListener("keydown", (e) => {
+            if (e.key === "Enter") {
+                e.preventDefault();
+                newTaskButton.click();
+            }
+        });
+        
+        newTodoContent.appendChild(tasksWrapper);
+
+        newTodo.appendChild(newTodoHeader);
+        newTodo.appendChild(newTaskSection);
+        newTodo.appendChild(newTodoContent);
+
+        todoWrapper.appendChild(newTodo)
+    });
+
 });
