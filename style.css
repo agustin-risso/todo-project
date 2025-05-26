@@ -49,13 +49,13 @@ body{
 main{
     flex: 1;
     display: flex;
+    flex-direction: column;
     width: 100%;
     overflow: hidden;
 }
 
 main > nav{
-    flex: 0 0 10%;
-    height: 100%;
+    height: fit-content;
     background-color: var(--navbar-bg-color);
     color: var(--navbar-text-color);
     display: flex;
@@ -65,91 +65,6 @@ main > nav{
 
 main > nav > h2{
     align-self: center;
-}
-
-main > nav > .boards-section{
-    background-color: var(--heading-color);
-    margin-top: 20px;
-    display: flex;
-    padding: 5px;
-    flex-direction: column;
-    border-radius: 4px;
-    height: 500px;
-}
-
-main > nav > .boards-section > .new-board-container{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 4px;
-    margin: 5px 0;
-}
-
-main > nav > .boards-section > .new-board-container > input{
-    background-color: transparent;
-    border: 1px solid transparent;
-    color: var(--navbar-text-color);
-    padding: 0 2px;
-    border-radius: 4px;
-    transition: all 200ms;
-}
-
-main > nav > .boards-section > .new-board-container > input:focus{
-    background-color: var(--navbar-bg-color);
-    outline: none;
-}
-
-main > nav > .boards-section > .new-board-container > .new-board-button{
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    border: 1px solid transparent;
-    cursor: pointer;
-    background-color: transparent;
-    color: var(--button-secondary-text);
-    transition: all 200ms;
-}
-
-main > nav > .boards-section > .new-board-container > .new-board-button:hover{
-    background-color: var(--button-secondary-hover-bg);
-}
-
-main > nav > .boards-section > .boards-tabs-container{
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-    padding: 0 2px;
-    overflow-y: auto;
-}
-
-main > nav > .boards-section > .boards-tabs-container > .board-tab{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 2px 4px;
-    background-color: var(--disabled-bg-color);
-    color: var(--text-secondary-color);
-    border: 1px solid transparent;
-    border-radius: 4px;
-    text-align: left;
-    cursor: pointer;
-    font-size: .82rem;
-}
-
-main > nav > .boards-section > .boards-tabs-container > .board-tab > .delete-board-button{
-    width: 20px;
-    height: 20px;
-    margin-right: -3px;
-    border-radius: 50%;
-    border: 1px solid transparent;
-    cursor: pointer;
-    background-color: transparent;
-    color: var(--button-secondary-text);
-    transition: all 200ms;
-}
-
-main > nav > .boards-section > .boards-tabs-container > .board-tab > .delete-board-button:hover{
-    background-color: var(--button-secondary-hover-bg);
 }
 
 main > .board{
@@ -293,3 +208,57 @@ footer{
     color: var(--disabled-text-color);
 }
 
+/* MOBILE */
+@media (max-width: 600px) {
+  main {
+    flex-direction: column;
+  }
+
+  main > nav {
+    width: 100%;
+    height: auto;
+    align-items: center;
+    justify-content: center;
+  }
+
+  main > .board {
+    padding: 20px;
+    flex: 1;
+    overflow-y: auto;
+  }
+
+  main > .board > .todo-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    gap: 10px;
+  }
+
+  main > .board > .todo-wrapper > .todo {
+    width: 100%;
+    height: auto;
+    min-height: 250px;
+  }
+
+  main > .board > .new-todo-button {
+    position: fixed;
+    bottom: 40px;
+    right: 30px;
+    z-index: 999;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  }
+}
+
+/* TABLETS */
+@media (max-width: 900px) {
+
+  main > .board > .todo-wrapper {
+    justify-content: center;
+  }
+
+  main > .board > .todo-wrapper > .todo {
+    width: 90%;
+  }
+}
